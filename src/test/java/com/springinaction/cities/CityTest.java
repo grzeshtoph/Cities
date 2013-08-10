@@ -53,9 +53,12 @@ public class CityTest {
         assertTrue(chicago.equals(chicago));
 
         City shadowChicago = new City();
-        shadowChicago.setName(chicago.getName());
+        assertFalse(chicago.equals(shadowChicago));
         shadowChicago.setPopulation(chicago.getPopulation());
+        assertFalse(chicago.equals(shadowChicago));
         shadowChicago.setState(chicago.getState());
+        assertFalse(chicago.equals(shadowChicago));
+        shadowChicago.setName(chicago.getName());
         assertTrue(chicago.equals(shadowChicago));
         assertTrue(shadowChicago.equals(chicago));
     }

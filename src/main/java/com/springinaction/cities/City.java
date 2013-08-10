@@ -37,7 +37,10 @@ public class City {
     @Override
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof City) {
+            if (this == obj) return true;
+
             City that = (City) obj;
+
             return Objects.equal(name, that.name)
                     && Objects.equal(state, that.state)
                     && Objects.equal(population, that.population);
