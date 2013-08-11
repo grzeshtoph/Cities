@@ -2,11 +2,13 @@ package com.springinaction.cities;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -18,6 +20,24 @@ import static org.junit.Assert.*;
 public class CityTest {
     @Resource
     private List<City> cities;
+    @Resource
+    private Map<String, City> cityMap;
+    @Autowired
+    private City chicago;
+    @Autowired
+    private City atlanta;
+    @Autowired
+    private City dallas;
+    @Autowired
+    private City houston;
+    @Autowired
+    private City odessa;
+    @Autowired
+    private City elPaso;
+    @Autowired
+    private City jal;
+    @Autowired
+    private City lasCruces;
 
     @Test
     public void citiesTest() {
@@ -31,6 +51,20 @@ public class CityTest {
         assertEquals("El Paso", cities.get(5).getName());
         assertEquals("Jal", cities.get(6).getName());
         assertEquals("Las Cruces", cities.get(7).getName());
+    }
+
+    @Test
+    public void cityMapTest() {
+        assertNotNull(cityMap);
+        assertEquals(8, cityMap.size());
+        assertSame(chicago, cityMap.get("chicago"));
+        assertSame(atlanta, cityMap.get("atlanta"));
+        assertSame(dallas, cityMap.get("dallas"));
+        assertSame(houston, cityMap.get("houston"));
+        assertSame(odessa, cityMap.get("odessa"));
+        assertSame(elPaso, cityMap.get("elPaso"));
+        assertSame(jal, cityMap.get("jal"));
+        assertSame(lasCruces, cityMap.get("lasCruces"));
     }
 
     @Test
