@@ -36,7 +36,20 @@
         <entry key="lasCruces" value="#{lasCruces}"/>
     </util:map>
 
-    <bean id="cityTestBean" class="com.springinaction.cities.CityTestBean"
+    <util:properties id="settings" location="/settings.properties"/>
+
+    <bean id="citiesBean" class="com.springinaction.cities.CitiesBean"
           p:chosenCity="#{cities[2]}"
-          p:chosenCityRandom="#{cities[T(java.lang.Math).random() * cities.size()]}"/>
+          p:chosenCityRandom="#{cities[T(java.lang.Math).random() * cities.size()]}"
+          p:dallasFromMap="#{cityMap['dallas']}"/>
+
+    <bean id="propertiesBean" class="com.springinaction.properties.PropertiesBean"
+          p:settings="#{settings}"
+          p:accessToken="#{settings['twitter.accessToken']}"
+          p:myProp1="#{settings['myprop.1']}"
+          p:myProp2="#{settings['myprop.2']}"
+          p:myProp3="#{settings['myprop.3']}"
+          p:javaHome="#{systemEnvironment['JAVA_HOME']}"
+          p:osName="#{systemProperties['os.name']}"
+          p:defaultSeparator="#{systemProperties['file.separator']}"/>
 </beans>
