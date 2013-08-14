@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,6 +31,12 @@ public class App {
         LOG.info("chosenCity: {}", citiesBean.getChosenCity());
         LOG.info("chosenCityRandom: {}", citiesBean.getChosenCityRandom());
         LOG.info("dallas from map: {}", citiesBean.getDallasFromMap());
+        LOG.info("bigCities: {}", citiesBean.getBigCities());
+        LOG.info("firstBigCity: {}", citiesBean.getFirstBigCity());
+        LOG.info("lastBigCity: {}", citiesBean.getLastBigCity());
+        LOG.info("cityNames: {}", Arrays.toString(citiesBean.getCityNames()));
+        LOG.info("bigCityNames: {}", Arrays.toString(citiesBean.getBigCityNames()));
+        LOG.info("smallCityNames: {}", Arrays.toString(citiesBean.getSmallCityNames()));
 
         PropertiesBean propertiesBean = ctx.getBean(PropertiesBean.class);
         LOG.info("settings: {}", propertiesBean.getSettings());

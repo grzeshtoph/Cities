@@ -41,7 +41,13 @@
     <bean id="citiesBean" class="com.springinaction.cities.CitiesBean"
           p:chosenCity="#{cities[2]}"
           p:chosenCityRandom="#{cities[T(java.lang.Math).random() * cities.size()]}"
-          p:dallasFromMap="#{cityMap['dallas']}"/>
+          p:dallasFromMap="#{cityMap['dallas']}"
+          p:bigCities="#{cities.?[population ge T(com.springinaction.cities.City).BIG_CITY]}"
+          p:firstBigCity="#{cities.^[population ge T(com.springinaction.cities.City).BIG_CITY]}"
+          p:lastBigCity="#{cities.$[population ge T(com.springinaction.cities.City).BIG_CITY]}"
+          p:cityNames="#{cities.![name + ', ' + state]}"
+          p:bigCityNames="#{cities.?[population ge T(com.springinaction.cities.City).BIG_CITY].![name]}"
+          p:smallCityNames="#{cities.?[population lt T(com.springinaction.cities.City).BIG_CITY].![name]}"/>
 
     <bean id="propertiesBean" class="com.springinaction.properties.PropertiesBean"
           p:settings="#{settings}"

@@ -6,6 +6,8 @@ import com.google.common.base.Objects;
  * Simple DO representing a city.
  */
 public class City {
+    public static final int BIG_CITY = 100000;
+
     private String name;
     private String state;
     private int population;
